@@ -4,6 +4,7 @@
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="addressbook"/>
 <mapAttribute key="org.testng.eclipse.ALL_CLASS_METHODS"/>
 <listAttribute key="org.testng.eclipse.CLASS_TEST_LIST">
+<listEntry value="com.example.tests.ContactData"/>
 <listEntry value="com.example.tests.TestBase"/>
 <listEntry value="com.example.tests.AlsofGroupCreationTests"/>
 <listEntry value="com.example.tests.GroupCreationTests"/>

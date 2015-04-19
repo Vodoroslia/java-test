@@ -4,17 +4,45 @@ import org.testng.annotations.Test;
 
 public class AlsofGroupCreationTests extends TestBase {
 	@Test
-	public void testNonEmptyGroupCreation() throws Exception {
+	public void nonEmptyContactCreation() throws Exception {
 		openMainPage();
-		gotoGroupPage();
-		initNewGroupCreation();
-		GroupData group = new GroupData();
-		group.name = "group name 1";
-		group.header = "header 1";
-		group.footer = "footer 1";
-		fillGroupForm(group);
-		submitGroupCreation();
-		gotoGroupPage();
+		openContactPage();
+		initNewContactCreation();
+		ContactData contact = new ContactData();
+
+		contact.firstname = "firstname";
+		contact.lastname = "lastname";
+		contact.address = "address";
+		contact.home = "home";
+		contact.mobile = "mobile";
+		contact.work = "work";
+		contact.email = "email";
+		contact.email2 = "email2";
+		contact.bday = "1";
+		contact.bmonth = "January";
+		contact.byear = "2000";
+		contact.address2 = "address2";
+		contact.phone2 = "phone2";
+		fillContactForm(contact);
+		submitContactCreation();
+		returnContactPage();
+
 	}
+
+	@Test
+	public void EmptyContactCreation() throws Exception {
+		openMainPage();
+		openContactPage();
+		initNewContactCreation();
+		fillContactForm(new ContactData("", "", "", "", "", "", "", "", "-",
+				"-", "-", "", ""));
+		submitContactCreation();
+		returnContactPage();
+
+	}
+	
+	
+	
+	
 
 }

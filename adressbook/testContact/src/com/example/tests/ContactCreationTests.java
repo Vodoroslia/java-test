@@ -1,0 +1,159 @@
+package com.example.tests;
+
+import java.util.regex.Pattern;
+import java.util.concurrent.TimeUnit;
+import static org.hamcrest.CoreMatchers.*;
+import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+public class ContactCreationTests {
+	private WebDriver driver;
+	private String baseUrl;
+	private boolean acceptNextAlert = true;
+	private StringBuffer verificationErrors = new StringBuffer();
+
+	@BeforeClass
+	public void setUp() throws Exception {
+		driver = new FirefoxDriver();
+		baseUrl = "http://localhost:8080/";
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	}
+
+	@Test
+	public void nonEmptyContactCreation() throws Exception {
+		openMainPage();
+		openContactPage();
+		initNewContactCreation();
+		ContactData contact = new ContactData();
+
+		contact.firstname = "firstname";
+		contact.lastname = "lastname";
+		contact.address = "address";
+		contact.home = "home";
+		contact.mobile = "mobile";
+		contact.work = "work";
+		contact.email = "email";
+		contact.email2 = "email2";
+		contact.bday = "1";
+		contact.bmonth = "January";
+		contact.byear = "2000";
+		contact.address2 = "address2";
+		contact.phone2 = "phone2";
+		fillContactForm(contact);
+		submitContactCreation();
+		returnContactPage();
+
+	}
+
+	@Test
+	public void EmptyContactCreation() throws Exception {
+		openMainPage();
+		openContactPage();
+		initNewContactCreation();
+		fillContactForm(new ContactData("", "", "", "", "", "", "", "", "-",
+				"-", "-", "", ""));
+		submitContactCreation();
+		returnContactPage();
+
+	}
+
+	private void returnContactPage() {
+		driver.findElement(By.linkText("home page")).click();
+	}
+
+	private void submitContactCreation() {
+		// submit contact creation
+		driver.findElement(By.name("submit")).click();
+	}
+
+	private void fillContactForm(ContactData contact) {
+		// fill contact form
+		driver.findElement(By.name("firstname")).clear();
+		driver.findElement(By.name("firstname")).sendKeys(contact.firstname);
+		driver.findElement(By.name("lastname")).clear();
+		driver.findElement(By.name("lastname")).sendKeys(contact.lastname);
+		driver.findElement(By.name("address")).clear();
+		driver.findElement(By.name("address")).sendKeys(contact.address);
+		driver.findElement(By.name("home")).clear();
+		driver.findElement(By.name("home")).sendKeys(contact.home);
+		driver.findElement(By.name("mobile")).clear();
+		driver.findElement(By.name("mobile")).sendKeys(contact.mobile);
+		driver.findElement(By.name("work")).clear();
+		driver.findElement(By.name("work")).sendKeys(contact.work);
+		driver.findElement(By.name("email")).clear();
+		driver.findElement(By.name("email")).sendKeys(contact.email);
+		driver.findElement(By.name("email2")).clear();
+		driver.findElement(By.name("email2")).sendKeys(contact.email2);
+		new Select(driver.findElement(By.name("bday")))
+				.selectByVisibleText(contact.bday);
+		new Select(driver.findElement(By.name("bmonth")))
+				.selectByVisibleText(contact.bmonth);
+		driver.findElement(By.name("byear")).clear();
+		driver.findElement(By.name("byear")).sendKeys(contact.byear);
+		driver.findElement(By.name("address2")).clear();
+		driver.findElement(By.name("address2")).sendKeys(contact.address2);
+		driver.findElement(By.name("phone2")).clear();
+		driver.findElement(By.name("phone2")).sendKeys(contact.phone2);
+	}
+
+	private void initNewContactCreation() {
+		// init new contact creation
+		driver.findElement(By.linkText("add new")).click();
+	}
+
+	private void openContactPage() {
+		// open contact page
+		driver.findElement(By.linkText("home")).click();
+	}
+
+	private void openMainPage() {
+		// open main page
+		driver.get(baseUrl + "/addressbookv4.1.4/");
+	}
+
+	@AfterClass
+	public void tearDown() throws Exception {
+		driver.quit();
+		String verificationErrorString = verificationErrors.toString();
+		if (!"".equals(verificationErrorString)) {
+			fail(verificationErrorString);
+		}
+	}
+
+	private boolean isElementPresent(By by) {
+		try {
+			driver.findElement(by);
+			return true;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+	}
+
+	private boolean isAlertPresent() {
+		try {
+			driver.switchTo().alert();
+			return true;
+		} catch (NoAlertPresentException e) {
+			return false;
+		}
+	}
+
+	private String closeAlertAndGetItsText() {
+		try {
+			Alert alert = driver.switchTo().alert();
+			String alertText = alert.getText();
+			if (acceptNextAlert) {
+				alert.accept();
+			} else {
+				alert.dismiss();
+			}
+			return alertText;
+		} finally {
+			acceptNextAlert = true;
+		}
+	}
+}

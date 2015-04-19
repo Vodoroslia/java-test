@@ -1,0 +1,24 @@
+1429450086141	Delete element
+1429450386052	Delete element
+1429451319317	Extract method 'openMainPage'
+1429451347155	Extract method 'openContactPage'
+1429451706490	Extract method 'initNewContactCreation'
+1429451748399	Extract method 'fillContactForm'
+1429451804747	Extract method 'submitContactCreation'
+1429452091232	Extract method 'returnContactPage'
+1429452334786	Introduce parameter for 'fillContactForm'
+1429452357822	Introduce parameter for 'fillContactForm'
+1429452390634	Introduce parameter for 'fillContactForm'
+1429452406858	Introduce parameter for 'fillContactForm'
+1429452429754	Introduce parameter for 'fillContactForm'
+1429452444543	Introduce parameter for 'fillContactForm'
+1429452477098	Introduce parameter for 'fillContactForm'
+1429452500021	Introduce parameter for 'fillContactForm'
+1429452532417	Introduce parameter for 'fillContactForm'
+1429452561136	Introduce parameter for 'fillContactForm'
+1429452586487	Introduce parameter for 'fillContactForm'
+1429452611561	Introduce parameter for 'fillContactForm'
+1429452648566	Introduce parameter for 'fillContactForm'
+1429453113541	Introduce Parameter Object
+1429453382987	Extract local variable 'contact'
+1429456883525	Move compilation unit
