@@ -22,9 +22,7 @@ public class TestBase {
 	@BeforeTest
 	public void setUp() throws Exception {
 		driver = new FirefoxDriver();
-		// на моей машине wampserver настроен на http://localhost:8080/
-		// baseUrl = "http://localhost:8080/";
-		baseUrl = "http://localhost/";
+		baseUrl = "http://localhost:8080/";
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 

@@ -7170,3 +7170,59 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
   Class:     org.testng.remote.RemoteTestNG
   Args:      -serport 53534 -d D:\github\java-test\adressbook\addressbook\test-output C:\Users\USER~1.WB0\AppData\Local\Temp\testng-eclipse-1879007513\testng-customsuite.xml
 java -ea -classpath /C:/Users/User.WB05660125/Desktop/selenium/eclipse/plugins/org.testng.eclipse_6.8.6.20141201_2240/lib/testng.jar:D:\github\java-test\adressbook\addressbook\bin:D:\курс\selenium-server-standalone-2.45.0.jar org.testng.remote.RemoteTestNG -serport 53534 -d D:\github\java-test\adressbook\addressbook\test-output C:\Users\USER~1.WB0\AppData\Local\Temp\testng-eclipse-1879007513\testng-customsuite.xml
+
+!ENTRY org.testng.eclipse 1 0 2015-04-19 12:16:03.497
+!MESSAGE [TestNGLaunchShortcut] Examining Java element:com.example.tests [in src [in addressbook]]
+  [Working copy] TestBase.java
+    package com.example.tests
+    import java.util.concurrent.TimeUnit
+    import org.openqa.selenium.Alert
+    import org.openqa.selenium.By
+    import org.openqa.selenium.NoAlertPresentException
+    import org.openqa.selenium.NoSuchElementException
+    import org.openqa.selenium.WebDriver
+    import org.openqa.selenium.firefox.FirefoxDriver
+    import org.testng.Assert
+    import org.testng.annotations.AfterTest
+    import org.testng.annotations.BeforeTest
+    class TestBase
+      WebDriver driver
+      String baseUrl
+      boolean acceptNextAlert
+      StringBuffer verificationErrors
+      void setUp()
+      void submitGroupCreation()
+      void fillGroupForm(GroupData)
+      void initNewGroupCreation()
+      void gotoGroupPage()
+      void openMainPage()
+      void tearDown()
+      boolean isElementPresent(By)
+      boolean isAlertPresent()
+      String closeAlertAndGetItsText()
+  [Working copy] AlsofGroupCreationTests.java
+    package com.example.tests
+    import org.testng.annotations.Test
+    class AlsofGroupCreationTests
+      void testNonEmptyGroupCreation()
+  [Working copy] GroupCreationTests.java
+    package com.example.tests
+    import org.testng.annotations.Test
+    class GroupCreationTests
+      void testEmptyGroupCreation()
+  GroupData.java
+    package com.example.tests
+    class GroupData
+      String name
+      String header
+      String footer
+      GroupData()
+      GroupData(String, String, String)
+
+!ENTRY org.testng.eclipse 1 0 2015-04-19 12:16:13.874
+!MESSAGE [TestNGLaunchConfigurationDelegate] Launching:
+  Classpath: /C:/Users/User.WB05660125/Desktop/selenium/eclipse/plugins/org.testng.eclipse_6.8.6.20141201_2240/lib/testng.jar D:\github\java-test\adressbook\addressbook\bin D:\курс\selenium-server-standalone-2.45.0.jar
+  VMArgs:    -ea
+  Class:     org.testng.remote.RemoteTestNG
+  Args:      -serport 54668 -d D:\github\java-test\adressbook\addressbook\test-output C:\Users\USER~1.WB0\AppData\Local\Temp\testng-eclipse--989592596\testng-customsuite.xml
+java -ea -classpath /C:/Users/User.WB05660125/Desktop/selenium/eclipse/plugins/org.testng.eclipse_6.8.6.20141201_2240/lib/testng.jar:D:\github\java-test\adressbook\addressbook\bin:D:\курс\selenium-server-standalone-2.45.0.jar org.testng.remote.RemoteTestNG -serport 54668 -d D:\github\java-test\adressbook\addressbook\test-output C:\Users\USER~1.WB0\AppData\Local\Temp\testng-eclipse--989592596\testng-customsuite.xml

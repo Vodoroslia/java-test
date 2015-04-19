@@ -1,37 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="4" passed="4">
+<testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="23788" started-at="2015-04-18T20:10:14Z" finished-at="2015-04-18T20:10:38Z">
+  <suite name="Default suite" duration-ms="62214" started-at="2015-04-19T09:16:21Z" finished-at="2015-04-19T09:17:23Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="23788" started-at="2015-04-18T20:10:14Z" finished-at="2015-04-18T20:10:38Z">
+    <test name="Default test" duration-ms="62214" started-at="2015-04-19T09:16:21Z" finished-at="2015-04-19T09:17:23Z">
       <class name="com.example.tests.GroupCreationTests">
-        <test-method status="PASS" signature="testEmptyGroupCreation()[pri:0, instance:com.example.tests.GroupCreationTests@ade8fd6]" name="testEmptyGroupCreation" duration-ms="2709" started-at="2015-04-18T23:10:31Z" finished-at="2015-04-18T23:10:34Z">
+        <test-method status="PASS" signature="testEmptyGroupCreation()[pri:0, instance:com.example.tests.GroupCreationTests@19b5302d]" name="testEmptyGroupCreation" duration-ms="2677" started-at="2015-04-19T12:17:20Z" finished-at="2015-04-19T12:17:23Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testEmptyGroupCreation -->
-        <test-method status="PASS" signature="testNonEmptyGroupCreation()[pri:0, instance:com.example.tests.GroupCreationTests@ade8fd6]" name="testNonEmptyGroupCreation" duration-ms="3201" started-at="2015-04-18T23:10:34Z" finished-at="2015-04-18T23:10:37Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testNonEmptyGroupCreation -->
       </class> <!-- com.example.tests.GroupCreationTests -->
       <class name="com.example.tests.AlsofGroupCreationTests">
-        <test-method status="PASS" signature="testEmptyGroupCreation()[pri:0, instance:com.example.tests.AlsofGroupCreationTests@597c3925]" name="testEmptyGroupCreation" duration-ms="3001" started-at="2015-04-18T23:10:25Z" finished-at="2015-04-18T23:10:28Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testEmptyGroupCreation -->
-        <test-method status="PASS" signature="testNonEmptyGroupCreation()[pri:0, instance:com.example.tests.AlsofGroupCreationTests@597c3925]" name="testNonEmptyGroupCreation" duration-ms="2909" started-at="2015-04-18T23:10:28Z" finished-at="2015-04-18T23:10:31Z">
+        <test-method status="PASS" signature="testNonEmptyGroupCreation()[pri:0, instance:com.example.tests.AlsofGroupCreationTests@6a8bda08]" name="testNonEmptyGroupCreation" duration-ms="14107" started-at="2015-04-19T12:17:06Z" finished-at="2015-04-19T12:17:20Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testNonEmptyGroupCreation -->
       </class> <!-- com.example.tests.AlsofGroupCreationTests -->
       <class name="com.example.tests.TestBase">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.example.tests.TestBase@6870a688]" name="setUp" is-config="true" duration-ms="11461" started-at="2015-04-18T23:10:14Z" finished-at="2015-04-18T23:10:25Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.example.tests.TestBase@3bc56049]" name="setUp" is-config="true" duration-ms="44840" started-at="2015-04-19T12:16:21Z" finished-at="2015-04-19T12:17:06Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.example.tests.TestBase@6870a688]" name="tearDown" is-config="true" duration-ms="482" started-at="2015-04-18T23:10:37Z" finished-at="2015-04-18T23:10:38Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.example.tests.TestBase@3bc56049]" name="tearDown" is-config="true" duration-ms="523" started-at="2015-04-19T12:17:23Z" finished-at="2015-04-19T12:17:23Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
