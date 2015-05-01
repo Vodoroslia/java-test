@@ -14,7 +14,6 @@ public class ContactData {
 	public String byear;
 	public String address2;
 	public String phone2;
-	
 	public ContactData() {
 		
 	}
