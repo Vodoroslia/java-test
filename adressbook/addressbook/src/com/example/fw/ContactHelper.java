@@ -1,10 +1,8 @@
 package com.example.fw;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Select;
 
 import com.example.tests.ContactData;
-import com.example.tests.TestBase;
 
 public class ContactHelper extends HelperBase{
 
@@ -34,10 +32,10 @@ public class ContactHelper extends HelperBase{
 		type(By.name("work"), contact.work);
 		type(By.name("email"), contact.email);
 		type(By.name("email2"), contact.email2);
-		selectByText(By.name("bday"), contact.bday);
-		selectByText(By.name("bmonth"), contact.bmonth);
-		driver.findElement(By.name("byear")).clear();
-		driver.findElement(By.name("byear")).sendKeys(contact.byear);
+		if (contact.bday !=null ){
+		selectByText(By.name("bday"), contact.bday);}
+		if (contact.bday !=null ){
+		selectByText(By.name("bmonth"), contact.bmonth);}
 		type(By.name("byear"), contact.byear);
 		type(By.name("address2"), contact.address2);
 		type(By.name("phone2"), contact.phone2);
@@ -50,4 +48,28 @@ public class ContactHelper extends HelperBase{
 		click(By.linkText("add new"));
 	}
 
+	public void deleteContact(int index) {
+		// TODO Auto-generated method stub	
+		selectContactByIndex(index);
+		click(By.xpath("//*[@id='maintable']//img[@title='Edit']"));
+		click(By.xpath("//input[@value='Delete']"));
+	}
+
+	private void selectContactByIndex(int index) {
+		click(By.xpath("//input[@name='selected[]']["+index+"]"));
+	}
+
+	public void initContactModification(int index) {
+		// TODO Auto-generated method stub
+		selectContactByIndex(index);	
+		click(By.xpath("//*[@id='maintable']//img[@title='Edit']"));
+	}
+
+
+
+
+	public void submitContactModification() {
+		// TODO Auto-generated method stub
+		click(By.xpath("//input[@value='Update']"));
+	}
 }

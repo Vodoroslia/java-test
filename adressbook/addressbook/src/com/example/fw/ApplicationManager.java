@@ -10,7 +10,6 @@ public class ApplicationManager {
 	public  WebDriver driver;
 	public  String baseUrl;
 	private  StringBuffer verificationErrors = new StringBuffer();
-
 	private NavigationHelper navigationHelper;
 	private GroupHelper groupHelper;
 	private ContactHelper contactHelper;

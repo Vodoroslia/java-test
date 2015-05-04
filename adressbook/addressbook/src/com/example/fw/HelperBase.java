@@ -16,8 +16,10 @@ public HelperBase(ApplicationManager manager){
 }
 
 protected void type(By locator, String text) {
+	if (text !=null ){
 	driver.findElement(locator).clear();
 	driver.findElement(locator).sendKeys(text);
+	}
 }
 
 

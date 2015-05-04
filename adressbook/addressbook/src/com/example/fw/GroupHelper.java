@@ -31,4 +31,30 @@ public class GroupHelper extends HelperBase{
 		click(By.name("new"));
 	}
 
+	public void deleteGroup(int index) {
+		// TODO Auto-generated method stub
+		
+		selectGroupByIndex(index);
+		click(By.name("delete"));
+		
+		
+	}
+
+	private void selectGroupByIndex(int index) {
+		click(By.xpath("//input[@name='selected[]']["+index+"]"));
+	}
+
+	public void initGroupModification(int index) {
+		// TODO Auto-generated method stub
+		
+		selectGroupByIndex(index);	
+		click(By.name("edit"));
+		
+	}
+
+	public void submitGroupModification() {
+		// TODO Auto-generated method stub
+		click(By.name("update"));
+	}
+
 }
