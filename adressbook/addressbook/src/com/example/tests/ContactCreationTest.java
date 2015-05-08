@@ -1,16 +1,24 @@
 package com.example.tests;
 
+import static org.testng.Assert.assertEquals;
+
+import java.util.Collections;
+import java.util.List;
+
 import org.testng.annotations.Test;
 
 public class ContactCreationTest extends TestBase {
 	@Test
 	public void nonEmptyContactCreation() throws Exception {
-		
-		ContactData contact = new ContactData();
+
 		app.getNavigatinHelper().openMainPage();
 		app.getNavigatinHelper().openContactPage();
+		ContactData contact = new ContactData();
+
+		// save old state сохранить старый список
+		List<ContactData> oldList = app.getContactHelper().getContacts();
+
 		app.getContactHelper().initNewContactCreation();
-	
 
 		contact.firstname = "firstname";
 		contact.lastname = "lastname";
@@ -29,6 +37,15 @@ public class ContactCreationTest extends TestBase {
 		app.getContactHelper().submitContactCreation();
 		app.getContactHelper().returnContactPage();
 
+		// save new state сохранить новый список
+		List<ContactData> newList = app.getContactHelper().getContacts();
+
+		// compare state сравнение длины списков
+		// assertEquals(newList.size(), oldList.size() + 1);
+
+		oldList.add(contact);
+		Collections.sort(oldList);
+		assertEquals(newList, oldList);
 	}
 
 	@Test
@@ -36,15 +53,12 @@ public class ContactCreationTest extends TestBase {
 		app.getNavigatinHelper().openMainPage();
 		app.getNavigatinHelper().openContactPage();
 		app.getContactHelper().initNewContactCreation();
-		app.getContactHelper().fillContactForm( new ContactData("", "", "", "", "", "", "", "", "-",
-				"-", "-", "", ""));
+		app.getContactHelper().fillContactForm(
+				new ContactData("", "", "", "", "", "", "", "", "-", "-", "-",
+						"", ""));
 		app.getContactHelper().submitContactCreation();
 		app.getContactHelper().returnContactPage();
 
 	}
-	
-	
-	
-	
 
 }

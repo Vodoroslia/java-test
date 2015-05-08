@@ -8,6 +8,7 @@ public class ContactRemovalTest extends TestBase {
 	public void deleteSomeContact() {
 	app.getNavigatinHelper().openMainPage();
 	app.getNavigatinHelper().openContactPage();
+	
 	app.getContactHelper().deleteContact(1);
 	app.getContactHelper().returnContactPage();
 	
