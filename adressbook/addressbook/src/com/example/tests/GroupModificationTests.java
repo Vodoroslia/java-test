@@ -29,6 +29,7 @@ public class GroupModificationTests extends TestBase {
 		oldList.remove(0);
 		oldList.add(group);
 		Collections.sort(oldList);
+		Collections.sort(newList);
 		assertEquals(newList, oldList);
 
 	}

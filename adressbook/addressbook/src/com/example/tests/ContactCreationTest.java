@@ -20,7 +20,7 @@ public class ContactCreationTest extends TestBase {
 
 		app.getContactHelper().initNewContactCreation();
 
-		contact.firstname = "firstname";
+		contact.firstname = "first";
 		contact.lastname = "lastname";
 		contact.address = "address";
 		contact.home = "home";
@@ -45,6 +45,7 @@ public class ContactCreationTest extends TestBase {
 
 		oldList.add(contact);
 		Collections.sort(oldList);
+		Collections.sort(newList);
 		assertEquals(newList, oldList);
 	}
 
@@ -52,12 +53,25 @@ public class ContactCreationTest extends TestBase {
 	public void EmptyContactCreation() throws Exception {
 		app.getNavigatinHelper().openMainPage();
 		app.getNavigatinHelper().openContactPage();
+		ContactData contact = new ContactData("", "", "", "", "", "", "", "", "-", "-", "-",
+				"", "");
+		
+		// save old state сохранить старый список
+		List<ContactData> oldList = app.getContactHelper().getContacts();
 		app.getContactHelper().initNewContactCreation();
-		app.getContactHelper().fillContactForm(
-				new ContactData("", "", "", "", "", "", "", "", "-", "-", "-",
-						"", ""));
+		app.getContactHelper().fillContactForm(contact);
 		app.getContactHelper().submitContactCreation();
 		app.getContactHelper().returnContactPage();
+		
+		List<ContactData> newList = app.getContactHelper().getContacts();
+
+		// compare state сравнение длины списков
+		// assertEquals(newList.size(), oldList.size() + 1);
+
+		oldList.add(contact);
+		Collections.sort(oldList);
+		Collections.sort(newList);
+		assertEquals(newList, oldList);
 
 	}
 

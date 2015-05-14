@@ -37,10 +37,8 @@ public class ContactHelper extends HelperBase{
 		type(By.name("work"), contact.work);
 		type(By.name("email"), contact.email);
 		type(By.name("email2"), contact.email2);
-		if (contact.bday !=null ){
-		selectByText(By.name("bday"), contact.bday);}
-		if (contact.bday !=null ){
-		selectByText(By.name("bmonth"), contact.bmonth);}
+		selectByText(By.name("bday"), contact.bday);
+		selectByText(By.name("bmonth"), contact.bmonth);
 		type(By.name("byear"), contact.byear);
 		type(By.name("address2"), contact.address2);
 		type(By.name("phone2"), contact.phone2);
@@ -61,7 +59,7 @@ public class ContactHelper extends HelperBase{
 	}
 
 	private void selectContactByIndex(int index) {
-		click(By.xpath("//input[@name='selected[]']["+index+"]"));
+		click(By.xpath("//input[@name='selected[]']["+(index+1)+"]"));
 	}
 
 	public void initContactModification(int index) {
@@ -86,10 +84,11 @@ public class ContactHelper extends HelperBase{
 				for (WebElement checkbox : checkboxes)  {
 				ContactData contact = new ContactData();
 				String title =checkbox.getAttribute("title");
-				contact.firstname = title.substring("Select (".length(),title.length() - ")".length());
+				String name = title.substring("Select (".length(),title.length() - ")".length());
+				contact.firstname =name.substring(0, name.lastIndexOf(" "));
 				contacts.add(contact);
 				}
 				return contacts;
-	
+				
 	}
 }
