@@ -53,8 +53,9 @@ public class ContactHelper extends HelperBase{
 
 	public void deleteContact(int index) {
 		// TODO Auto-generated method stub	
-		selectContactByIndex(index);
-		click(By.xpath("//*[@id='maintable']//img[@title='Edit']"));
+	//selectContactByIndex(index);
+	
+		click(By.xpath("(//img[@alt='Edit'])[" + (index+1) + "]"));
 		click(By.xpath("//input[@value='Delete']"));
 	}
 
@@ -64,11 +65,12 @@ public class ContactHelper extends HelperBase{
 
 	public void initContactModification(int index) {
 		// TODO Auto-generated method stub
-		selectContactByIndex(index);	
-		click(By.xpath("//*[@id='maintable']//img[@title='Edit']"));
+		
+		click(By.xpath("(//img[@alt='Edit'])[" + (index+1) + "]"));
 	}
 
-
+	
+	
 
 
 	public void submitContactModification() {
@@ -78,17 +80,21 @@ public class ContactHelper extends HelperBase{
 
 	public List<ContactData> getContacts() {
 		// TODO Auto-generated method stub
-		// TODO Auto-generated method stub
+	
 				List <ContactData> contacts = new ArrayList <ContactData> () ;
-				List<WebElement> checkboxes= driver.findElements(By.name("selected[]"));
-				for (WebElement checkbox : checkboxes)  {
-				ContactData contact = new ContactData();
-				String title =checkbox.getAttribute("title");
-				String name = title.substring("Select (".length(),title.length() - ")".length());
-				contact.firstname =name.substring(0, name.lastIndexOf(" "));
-				contacts.add(contact);
+				List<WebElement> rows = getContactRows();
+				for (WebElement row : rows) {
+				    ContactData contact = new ContactData();
+				   // String firstname= (row.findElement(By.xpath(".//td[2]")).getText());
+				    contact.firstname = (row.findElement(By.xpath(".//td[2]")).getText());
+				    contacts.add(contact);
 				}
-				return contacts;
+				
+				return contacts;			
 				
 	}
+	
+	private List<WebElement> getContactRows() {
+			return driver.findElements(By.xpath("//tr[@name='entry']"));
+		 	}
 }

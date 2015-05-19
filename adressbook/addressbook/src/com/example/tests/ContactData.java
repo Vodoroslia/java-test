@@ -67,11 +67,14 @@ public class ContactData  implements Comparable <ContactData > {
 	}
 
 
+	
+
 	@Override
 	public String toString() {
-		return "ContactData [firstname=" + firstname + "]";
+		return "ContactData [firstname=" + firstname + ", lastname=" + lastname
+				+ ", address=" + address + "]";
 	}
-	
+
 
 	@Override
 	public int compareTo(ContactData other) {
