@@ -1,44 +1,35 @@
 package com.example.tests;
 
-import static org.testng.Assert.assertEquals;
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertThat;
 
-import java.util.Collections;
-import java.util.List;
 import java.util.Random;
 
 import org.testng.annotations.Test;
 
-public class ContactModificationTests extends TestBase{
+import com.example.utils.SortedListOf;
 
-	
-	
-	@Test (dataProvider = "randomValidContactGenerator")
+public class ContactModificationTests extends TestBase {
+
+	@Test(dataProvider = "randomValidContactGenerator")
 	public void modifySomeContact(ContactData contact) {
-		app.getNavigatinHelper().openMainPage();
-		app.getNavigatinHelper().openContactPage();
-		
+		app.navigateTo().openContactPage();
+
 		// save old state сохранить старый список
-		List<ContactData> oldList = app.getContactHelper().getContacts();
-		Random rnd= new Random();
-		int index =rnd.nextInt(oldList.size()-1);
-		
-		app.getContactHelper().initContactModification(index);
-		app.getContactHelper().fillContactForm(contact);
-		app.getContactHelper().submitContactModification();
-		app.getNavigatinHelper().openContactPage();
+		SortedListOf<ContactData> oldList = app.getContactHelper()
+				.getContacts();
+		Random rnd = new Random();
+		int index = rnd.nextInt(oldList.size() - 1);
+
+		app.getContactHelper().modifyContact(index, contact);
+
+		app.navigateTo().openContactPage();
 		// save new state сохранить новый список
-		List<ContactData> newList = app.getContactHelper().getContacts();
-			// compare state сравнение длины списков
-				// assertEquals(newList.size(), oldList.size() - 1);
-				oldList.remove(index);
-				oldList.add(contact);
-				Collections.sort(oldList);
-				Collections.sort(newList);
-				assertEquals(newList, oldList);
-
-
+		SortedListOf<ContactData> newList = app.getContactHelper()
+				.getContacts();
 		
-		
-}
-	
+		assertThat(newList, equalTo(oldList.without(index).withAdded(contact)));
+
+	}
+
 }

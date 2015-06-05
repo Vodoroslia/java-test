@@ -1,100 +1,137 @@
 package com.example.fw;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import com.example.tests.ContactData;
-import com.example.tests.GroupData;
+import com.example.utils.SortedListOf;
 
-public class ContactHelper extends HelperBase{
+public class ContactHelper extends HelperBase {
+
 
 	public ContactHelper(ApplicationManager manager) {
 		super(manager);
-		// TODO Auto-generated constructor stub
 	}
-
-	public void returnContactPage() {
-		click(By.linkText("home page"));
+	
+private SortedListOf<ContactData> cachedContacts;
+	
+	public SortedListOf<ContactData> getContacts()  {	
+	if (cachedContacts==null) {
+	rebuildCache();	
 	}
+	return cachedContacts;
+		
+	}
+	
 
-	public void submitContactCreation() {
+	private void rebuildCache() {
+		cachedContacts = new SortedListOf<ContactData> () ;
+		manager.navigateTo().MainPage();
+		List<WebElement> rows = getContactRows();
+		for (WebElement row : rows) {
+			String firstname = (row.findElement(By.xpath(".//td[2]")).getText());
+			ContactData contact = new ContactData().withFirstname(firstname);
+			cachedContacts.add(contact);
+		}
+
+	
+
+	}
+	
+	
+
+	public ContactHelper  createContact(ContactData contact) {
+		initNewContactCreation();
+		fillContactForm(contact);
+		submitContactCreation();
+		manager.navigateTo().openContactPage();
+		rebuildCache();	
+		return this;
+	}
+	public ContactHelper deleteContact(int index) {
+		initContactModification(index);
+		submitContactDeletion();
+		manager.navigateTo().openContactPage();
+		rebuildCache();
+		return this;
+	}
+	
+	
+	public ContactHelper modifyContact(int index, ContactData contact) {
+		// TODO Auto-generated method stub
+		initContactModification(index);
+		fillContactForm(contact);
+	submitContactModification();
+		return this;
+	}
+//---------------------------------------------
+
+
+	public ContactHelper submitContactCreation() {
 		// submit contact creation
 		click(By.name("submit"));
-		
+		cachedContacts=null;
+		return this;
+
 	}
 
 	public void fillContactForm(ContactData contact) {
 		// fill contact form
-		
-		type(By.name("firstname"), contact.firstname);
-		type(By.name("lastname"), contact.lastname);
-		type(By.name("address"), contact.address);
-		type(By.name("home"), contact.home);
-		type(By.name("mobile"), contact.mobile);
-		type(By.name("work"), contact.work);
-		type(By.name("email"), contact.email);
-		type(By.name("email2"), contact.email2);
-		selectByText(By.name("bday"), contact.bday);
-		selectByText(By.name("bmonth"), contact.bmonth);
-		type(By.name("byear"), contact.byear);
-		type(By.name("address2"), contact.address2);
-		type(By.name("phone2"), contact.phone2);
+
+		type(By.name("firstname"), contact.getFirstname());
+		type(By.name("lastname"), contact.getLastname());
+		type(By.name("address"), contact.getAddress());
+		type(By.name("home"), contact.getHome());
+		type(By.name("mobile"), contact.getMobile());
+		type(By.name("work"), contact.getWork());
+		type(By.name("email"), contact.getEmail());
+		type(By.name("email2"), contact.getEmail2());
+		selectByText(By.name("bday"), contact.getBday());
+		selectByText(By.name("bmonth"), contact.getBmonth());
+		type(By.name("byear"), contact.getByear());
+		type(By.name("address2"), contact.getAddress2());
+		type(By.name("phone2"), contact.getPhone2());
 	}
 
-	
-
-	public void initNewContactCreation() {
+	public ContactHelper initNewContactCreation() {
 		// init new contact creation
+		manager.navigateTo().MainPage();
 		click(By.linkText("add new"));
+		return this;
 	}
 
-	public void deleteContact(int index) {
-		// TODO Auto-generated method stub	
-	//selectContactByIndex(index);
 	
-		click(By.xpath("(//img[@alt='Edit'])[" + (index+1) + "]"));
-		click(By.xpath("//input[@value='Delete']"));
-	}
 
 	private void selectContactByIndex(int index) {
-		click(By.xpath("//input[@name='selected[]']["+(index+1)+"]"));
+		click(By.xpath("//input[@name='selected[]'][" + (index + 1) + "]"));
+
 	}
 
-	public void initContactModification(int index) {
+	public ContactHelper initContactModification(int index) {
 		// TODO Auto-generated method stub
-		
-		click(By.xpath("(//img[@alt='Edit'])[" + (index+1) + "]"));
+
+		click(By.xpath("(//img[@alt='Edit'])[" + (index + 1) + "]"));
+	
+		return this;
 	}
 
-	
-	
-
-
-	public void submitContactModification() {
+	public ContactHelper submitContactModification() {
 		// TODO Auto-generated method stub
 		click(By.xpath("//input[@value='Update']"));
+		cachedContacts=null;
+		return this;
 	}
 
-	public List<ContactData> getContacts() {
-		// TODO Auto-generated method stub
-	
-				List <ContactData> contacts = new ArrayList <ContactData> () ;
-				List<WebElement> rows = getContactRows();
-				for (WebElement row : rows) {
-				    ContactData contact = new ContactData();
-				   // String firstname= (row.findElement(By.xpath(".//td[2]")).getText());
-				    contact.firstname = (row.findElement(By.xpath(".//td[2]")).getText());
-				    contacts.add(contact);
-				}
-				
-				return contacts;			
-				
+	private void submitContactDeletion() {
+		click(By.xpath("//input[@value='Delete']"));
+		cachedContacts=null;
+	}
+
+	private List<WebElement> getContactRows() {
+		return driver.findElements(By.xpath("//tr[@name='entry']"));
 	}
 	
-	private List<WebElement> getContactRows() {
-			return driver.findElements(By.xpath("//tr[@name='entry']"));
-		 	}
+
 }

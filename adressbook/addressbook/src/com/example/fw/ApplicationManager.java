@@ -20,8 +20,8 @@ public class ApplicationManager {
 		// "http://localhost:8080/";
 		baseUrl = "http://localhost:8080";
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-	
-	
+		driver.get(baseUrl + "/addressbookv4.1.4/");
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	
 		
     }
@@ -33,7 +33,7 @@ public class ApplicationManager {
 
 	}
 	
-	public NavigationHelper getNavigatinHelper() {
+	public NavigationHelper navigateTo() {
 	
 		if (navigationHelper == null){
 			

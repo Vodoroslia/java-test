@@ -1,19 +1,19 @@
 package com.example.tests;
 
 public class ContactData  implements Comparable <ContactData > {
-	public String firstname;
-	public String lastname;
-	public String address;
-	public String home;
-	public String mobile;
-	public String work;
-	public String email;
-	public String email2;
-	public String bday;
-	public String bmonth;
-	public String byear;
-	public String address2;
-	public String phone2;
+	private String firstname;
+	private String lastname;
+	private String address;
+	private String home;
+	private String mobile;
+	private String work;
+	private String email;
+	private String email2;
+	private String bday;
+	private String bmonth;
+	private String byear;
+	private String address2;
+	private String phone2;
 	public ContactData() {
 		
 	}
@@ -82,4 +82,164 @@ public class ContactData  implements Comparable <ContactData > {
 		
 		return this.firstname.toLowerCase().compareTo(other.firstname.toLowerCase());
 	}
+
+
+	public ContactData withFirstname(String firstname) {
+		this.firstname = firstname;
+		// TODO Auto-generated method stub
+		return this;
+	}
+
+
+	public ContactData withLastname(String lastname) {
+		this.lastname = lastname;
+		// TODO Auto-generated method stub
+		return this;
+	}
+
+
+	public ContactData withAddress(String address) {
+		this.address = address;
+		// TODO Auto-generated method stub
+		return this;
+	}
+
+
+	public ContactData withHome(String home) {
+		this.home = home;
+		// TODO Auto-generated method stub
+		return this;
+	}
+
+
+	public ContactData withMobile(String mobile) {
+		this.mobile = mobile;
+		// TODO Auto-generated method stub
+		return this;
+	}
+
+
+	public ContactData withWork(String work) {
+		
+		this.work = work;
+		// TODO Auto-generated method stub
+		return this;
+	}
+
+
+	public ContactData withEmail(String email) {
+		this.email = email;
+		// TODO Auto-generated method stub
+		return this;
+	}
+
+
+	public ContactData  withEmail2(String email2) {
+		this.email2 = email2;
+		// TODO Auto-generated method stub
+		return this;
+	}
+
+
+	public ContactData withBday(String bday) {
+		this.bday = bday;
+		// TODO Auto-generated method stub
+		return this;
+	}
+
+
+	public ContactData withBmonth(String bmonth) {
+		this.bmonth = bmonth;
+		// TODO Auto-generated method stub
+		return this;
+	}
+
+
+	public ContactData withByear(String byear) {
+		this.byear = byear;
+		// TODO Auto-generated method stub
+		return this;
+	}
+
+
+	public ContactData withAddress2(String address2) {
+		this.address2 = address2;
+		// TODO Auto-generated method stub
+		return this;
+	}
+
+
+	public ContactData withPhone2(String phone2) {
+		this.phone2 = phone2;
+		// TODO Auto-generated method stub
+		return this;
+	}
+
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+
+	public String getLastname() {
+		return lastname;
+	}
+
+
+	public String getAddress() {
+		return address;
+	}
+
+
+	public String getHome() {
+		return home;
+	}
+
+
+	public String getMobile() {
+		return mobile;
+	}
+
+
+	public String getWork() {
+		return work;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public String getEmail2() {
+		return email2;
+	}
+
+
+	public String getBday() {
+		return bday;
+	}
+
+
+	public String getBmonth() {
+		return bmonth;
+	}
+
+
+	public String getByear() {
+		return byear;
+	}
+
+
+	public String getAddress2() {
+		return address2;
+	}
+
+
+	public String getPhone2() {
+		return phone2;
+	}
+
+
+	
 }

@@ -9,22 +9,43 @@ public class NavigationHelper extends HelperBase{
 		// TODO Auto-generated constructor stub
 	}
 
-	public void gotoGroupPage() {
+	public void GroupPage() {
 		// gotoGroupPage
-		click(By.linkText("groups"));
-		
+		if(!onGrouspPage()){
+			click(By.linkText("groups"));		
+		}
 	}
 
-	public void openMainPage() {
+
+
+	private boolean onGrouspPage() {
+		if(driver.getCurrentUrl().contains("/groups.php")
+			&& driver.findElements(By.name("new")).size()>0) {
+			return true;	
+			} else {
+		
+		return false;
+	}
+	}
+	
+
+	public void MainPage() {
 		// open main page
-		driver.get(manager.baseUrl + "/addressbookv4.1.4/");
+		if(! onMainPage()){
+		
+		click(By.linkText("home"));
+		}
+	}
+
+	private boolean onMainPage() {
+		// TODO Auto-generated method stub
+		return driver.findElements(By.id("maintable")).size()>0;
 	}
 
 	public void openContactPage() {
 		// open contact page
-		click(By.linkText("home"));
+		click(By.linkText("home page"));
 	
 	}
-
 
 }
