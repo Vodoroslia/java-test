@@ -13,7 +13,7 @@ public class ContactModificationTests extends TestBase {
 
 	@Test(dataProvider = "randomValidContactGenerator")
 	public void modifySomeContact(ContactData contact) {
-	
+		app.navigateTo().openContactPage();
 
 		// save old state сохранить старый список
 		SortedListOf<ContactData> oldList = app.getContactHelper()
@@ -23,7 +23,7 @@ public class ContactModificationTests extends TestBase {
 
 		app.getContactHelper().modifyContact(index, contact);
 
-		
+		app.navigateTo().openContactPage();
 		// save new state сохранить новый список
 		SortedListOf<ContactData> newList = app.getContactHelper()
 				.getContacts();

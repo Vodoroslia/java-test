@@ -64,8 +64,6 @@ private SortedListOf<ContactData> cachedContacts;
 		initContactModification(index);
 		fillContactForm(contact);
 	submitContactModification();
-	manager.navigateTo().openContactPage();
-	rebuildCache();
 		return this;
 	}
 //---------------------------------------------
