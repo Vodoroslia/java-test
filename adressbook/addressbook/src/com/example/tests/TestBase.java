@@ -11,6 +11,7 @@ import org.testng.annotations.DataProvider;
 
 import com.example.fw.ApplicationManager;
 
+import static com.example.tests.GroupDataGenerator.generaiteRandomGroups;;
 public class TestBase {
 	protected ApplicationManager app;
 	private String name;
@@ -44,33 +45,19 @@ public class TestBase {
 
 	@DataProvider
 	public Iterator<Object[]> randomValidContactGenerator() {
+		return wrapGroupsForDataProvider(generaiteRandomGroups(5)).iterator();
+	}
+
+
+	public static List<Object[]> wrapGroupsForDataProvider(List<GroupData> groups) {
 		List<Object[]> list = new ArrayList<Object[]>();
-
-		for (int i = 0; i < 5; i++) {
-			ContactData contact = new ContactData()
-					.withFirstname(generateRandomString())
-					.withLastname(generateRandomString())
-					.withAddress(generateRandomString())
-					.withHome(generateRandomString())
-					.withMobile(generateRandomString())
-					.withWork(generateRandomString())
-					.withEmail(generateRandomString())
-					.withEmail2(generateRandomString()).withBday("1")
-					.withBmonth("January").withByear("2000")
-					.withAddress2(generateRandomString())
-					.withPhone2(generateRandomString());
-			list.add(new Object[] { contact });
+		for (GroupData group:groups){
+			list.add(new Object[]{group});
 		}
-		return list.iterator();
+	
+		return list;
 	}
 
-	public String generateRandomString() {
-		Random rnd = new Random();
-		if (rnd.nextInt(3) == 0) {
-			return "";
-		} else {
-			return "test" + rnd.nextInt();
-		}
-	}
+	
 
 }
