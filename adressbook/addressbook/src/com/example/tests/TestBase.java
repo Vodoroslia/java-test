@@ -1,6 +1,7 @@
 package com.example.tests;
 
 import static com.example.tests.GroupDataGenerator.generaiteRandomGroups;
+import static com.example.tests.ContactDataGenerator.generaiteRandomContacts;
 
 import java.io.File;
 import java.io.FileReader;
@@ -38,24 +39,9 @@ properties.load(new FileReader(new File(configFile)));
 
 	@DataProvider
 	public Iterator<Object[]> randomValidGroupGenerator() {
-		List<Object[]> list = new ArrayList<Object[]>();
-
-		for (int i = 0; i < 5; i++) {
-			GroupData group = new GroupData().withName(generateRandomString())
-					.withHeader(generateRandomString())
-					.withFooter(generateRandomString());
-
-			list.add(new Object[] { group });
-		}
-		return list.iterator();
+		
+ 		return wrapGroupsForDataProvider(generaiteRandomGroups(5)).iterator();
 	}
-
-	@DataProvider
-	public Iterator<Object[]> randomValidContactGenerator() {
-		return wrapGroupsForDataProvider(generaiteRandomGroups(5)).iterator();
-	}
-
-
 	public static List<Object[]> wrapGroupsForDataProvider(List<GroupData> groups) {
 		List<Object[]> list = new ArrayList<Object[]>();
 		for (GroupData group:groups){
@@ -63,6 +49,21 @@ properties.load(new FileReader(new File(configFile)));
 		}
 	
 		return list;
+	}
+	@DataProvider
+	public Iterator<Object[]> randomValidContactGenerator() {
+		return wrapContactsForDataProvider(generaiteRandomContacts(5)).iterator();
+		}
+		
+	
+	public static List<Object[]> wrapContactsForDataProvider(List<ContactData> contacts) {
+		List<Object[]> list = new ArrayList<Object[]>();
+		for (ContactData contact:contacts){
+			list.add(new Object[]{contact});
+		}
+	
+		return list;
+		
 	}
 
 	private static String generateRandomString() {

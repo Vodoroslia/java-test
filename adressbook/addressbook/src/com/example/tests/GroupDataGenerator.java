@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
 import com.thoughtworks.xstream.XStream;
 
 public class GroupDataGenerator {
@@ -17,7 +16,7 @@ public class GroupDataGenerator {
 		if (args.length < 3) {
 			// TODO Auto-generated method stub
 			System.out
-					.println("Пожалуйста введите параметры <amount of test data> <file> <format>");
+					.println("Пожалуйста введите параметры: <amount of test data> <file> <format>");
 			return;
 		}
 		int amount = Integer.parseInt(args[0]);
@@ -40,14 +39,15 @@ public class GroupDataGenerator {
 		}
 	}
 
-	private static void saveGroupsToXmlFile(List<GroupData> groups, File file) throws IOException {
+	private static void saveGroupsToXmlFile(List<GroupData> groups, File file)
+			throws IOException {
 		// TODO Auto-generated method stub
-				XStream xstream = new XStream();
-				xstream.alias(("group"), GroupData.class);
-				String xml = xstream.toXML(groups);
-				FileWriter writer = new FileWriter(file);
-				writer.write(xml);
-				writer.close();
+		XStream xstream = new XStream();
+		xstream.alias(("group"), GroupData.class);
+		String xml = xstream.toXML(groups);
+		FileWriter writer = new FileWriter(file);
+		writer.write(xml);
+		writer.close();
 		// TODO Auto-generated method stub
 
 	}
@@ -56,7 +56,7 @@ public class GroupDataGenerator {
 			throws IOException {
 		XStream xstream = new XStream();
 		xstream.alias(("group"), GroupData.class);
-		return (List<GroupData>) xstream.fromXML(file);	
+		return (List<GroupData>) xstream.fromXML(file);
 
 	}
 
