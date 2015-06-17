@@ -6,7 +6,6 @@ import static com.example.tests.GroupDataGenerator.loadGroupsFromXmlFile;
 import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
-
 import org.testng.AssertJUnit;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;

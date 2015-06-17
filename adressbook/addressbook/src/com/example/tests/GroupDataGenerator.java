@@ -25,7 +25,7 @@ public class GroupDataGenerator {
 		String format = args[2];
 		if (file.exists()) {
 			System.out
-					.println("Файл существует, пожалуйста удалите его вручную"
+					.println("Файл существует, пожалуйста удалите его вручную "
 							+ file);
 			return;
 		}
